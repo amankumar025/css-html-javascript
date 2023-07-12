@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Box App</title>
+  <style>
+    #input-box {
+      margin-bottom: 10px;
+    }
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text" id="input-box" />
+    <button onclick="addItem()">Submit</button>
+  </div>
+  <div id="output"></div>
+
+  <script>
+    function addItem() {
+      const inputBox = document.getElementById('input-box');
+      const output = document.getElementById('output');
+
+      const newItem = document.createElement('p');
+      newItem.textContent = inputBox.value;
+      output.appendChild(newItem);
+
+      inputBox.value = '';
+    }
+  </script>
+</body>
+</html>

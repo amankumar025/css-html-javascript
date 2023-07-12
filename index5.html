@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Modal Window</title>
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow: auto;
+    }
+    .modal-content {
+      background-color: #fff;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .modal-close {
+      float: right;
+      cursor: pointer;
+    }
+
+    /* Body styles */
+    body.modal-open {
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button onclick="openModal()">Open Modal</button>
+  </div>
+
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h2>Modal Window</h2>
+      <p>This is a custom modal window.</p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('myModal');
+    const body = document.body;
+
+    function openModal() {
+      modal.style.display = 'block';
+      body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      body.classList.remove('modal-open');
+    }
+
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
